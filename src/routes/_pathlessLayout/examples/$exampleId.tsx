@@ -49,7 +49,7 @@ function ExampleDetail() {
           <Pill>
             Fastest:{" "}
             {example.models.find((m) => m.duration.toLowerCase().includes("sec"))?.duration ??
-              example.models[0].duration}
+              example.models[0].name}
           </Pill>
           <Pill>
             Cheapest: ${example.models.reduce((a, b) => (a.cost < b.cost ? a : b)).cost.toFixed(3)}
