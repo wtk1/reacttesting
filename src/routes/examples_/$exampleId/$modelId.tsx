@@ -1,9 +1,20 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
 export const Route = createFileRoute("/examples_/$exampleId/$modelId")({
   component: PageView,
 });
+
+function Skeleton() {
+  return (
+    <div className="p-6">
+      <div className="h-6 w-40 bg-gray-200 dark:bg-gray-800 rounded mb-4 animate-pulse" />
+      <div className="h-4 w-80 bg-gray-200 dark:bg-gray-800 rounded mb-2 animate-pulse" />
+      <div className="h-4 w-64 bg-gray-200 dark:bg-gray-800 rounded mb-2 animate-pulse" />
+      <div className="h-64 w-full bg-gray-200 dark:bg-gray-800 rounded-xl mt-6 animate-pulse" />
+    </div>
+  );
+}
 
 function PageView() {
   const { exampleId, modelId } = Route.useParams();
@@ -13,21 +24,16 @@ function PageView() {
   );
 
   return (
-    <div className="relative min-h-screen">
-      {/* Floating back button */}
-      {/*
-      <Link
-        to="/examples/$exampleId"
-        params={{ exampleId }}
-        className="fixed top-4 left-4 z-50 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm text-blue-600 shadow hover:underline"
+      <Suspense
+        fallback={
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <Skeleton />
+          </div>
+        }
       >
-        ← Back
-      </Link>
-      */}
-
-      <Suspense fallback={<p className="p-4">Loading page...</p>}>
-        <PageComponent />
+        <div className="max-w-[1400px] mx-auto">
+          <PageComponent />
+        </div>
       </Suspense>
-    </div>
   );
 }

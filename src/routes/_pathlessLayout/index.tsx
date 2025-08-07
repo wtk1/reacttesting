@@ -7,32 +7,68 @@ export const Route = createFileRoute("/_pathlessLayout/")({
   component: Home,
 });
 
+function StatBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-md bg-gray-100 dark:bg-gray-800/70 px-2 py-0.5 text-xs text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+      {children}
+    </span>
+  );
+}
+
 function Home() {
   return (
     <div>
-      <h2 className="text-3xl font-semibold mb-6 text-gray-900">
-        Examples
-      </h2>
+      <div className="mb-8">
+        <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+          Examples
+        </h2>
+        <p className="mt-2 text-gray-600 dark:text-gray-400">
+          Explore AI-generated pages across models. Click a card to view details and the rendered page.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {examples.map(({ id, title, models }) => (
-          <Link
-            key={id}
-            to='/examples/$exampleId'
-            params={{
-              exampleId: id
-            }}
-            className="block p-4 bg-white rounded-2xl shadow hover:shadow-lg transition"
-          >
-            <h3 className="text-xl font-medium text-gray-900">
-              {title}
-            </h3>
-            <p className="mt-2 text-sm text-gray-600">
-              {models.map((m) => m.name).join(', ')}
-            </p>
-          </Link>
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        {examples.map(({ id, title, models }) => {
+          const modelNames = models.map((m) => m.name);
+          const fastest = models.find((m) => m.duration.toLowerCase().includes("sec"))?.duration ?? models[0]?.duration;
+          const cheapest = models.reduce((a, b) => (a.cost < b.cost ? a : b), models[0]);
+
+          return (
+            <Link
+              key={id}
+              to="/examples/$exampleId"
+              params={{ exampleId: id }}
+              className="group relative block rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-sm hover:shadow-lg transition overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+            >
+              <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-sky-500/0 via-fuchsia-500/0 to-violet-500/0 opacity-0 group-hover:opacity-20 transition pointer-events-none" />
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                  {title}
+                </h3>
+                <span className="ml-2 inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 text-xs border border-emerald-200/70 dark:border-emerald-800/70">
+                  {models.length} models
+                </span>
+              </div>
+
+              <p className="mt-2 line-clamp-1 text-sm text-gray-600 dark:text-gray-400">
+                {modelNames.join(", ")}
+              </p>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <StatBadge>Fastest: {fastest}</StatBadge>
+                <StatBadge>Cheapest: ${cheapest.cost.toFixed(3)}</StatBadge>
+              </div>
+
+              <div className="mt-5 flex items-center gap-2 text-sm text-sky-700 dark:text-sky-300">
+                <span className="translate-x-0 group-hover:translate-x-0.5 transition">Open details</span>
+                <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
-  )
+  );
 }
