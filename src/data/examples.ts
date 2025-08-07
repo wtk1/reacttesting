@@ -38,8 +38,8 @@ const examples: Example[] = [
       {
         name: "claude-opus-4.1",
         host: "OpenRouter.ai",
-        duration: "fewer sec",
-        cost: 20,
+        duration: "1m 59s",
+        cost: 0.426315,
       },
       {
         name: "MYSTERY-horizon-beta",
