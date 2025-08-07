@@ -44,7 +44,13 @@ const examples: Example[] = [
       {
         name: "MYSTERY-horizon-beta",
         host: "OpenRouter.AI (Free Beta)",
-        duration: "few sec",
+        duration: "Forgor to look ☠️",
+        cost: 0,
+      },
+      {
+        name: "MYSTERY2-horizon-beta",
+        host: "OpenRouter.AI (Second Try)",
+        duration: "1m 30s",
         cost: 0,
       },
     ],
