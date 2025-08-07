@@ -31,7 +31,7 @@ function PageView() {
           </div>
         }
       >
-        <div className="max-w-[1400px] mx-auto">
+        <div className="mx-auto">
           <PageComponent />
         </div>
       </Suspense>
