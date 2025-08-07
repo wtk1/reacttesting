@@ -1,17 +1,21 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Outlet } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
+import { Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/_pathlessLayout')({
+export const Route = createFileRoute("/_pathlessLayout")({
   component: LayoutComponent,
-})
+});
 
 function LayoutComponent() {
   return (
-    <div className="p-2">
-      <div className="border-b">I'm a pathless layout</div>
-      <div>
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      <header className="bg-white shadow p-4">
+        <h1 className="text-2xl font-bold text-gray-900">
+          AI-Component Gallery
+        </h1>
+      </header>
+      <main className="p-6 max-w-4xl mx-auto">
         <Outlet />
-      </div>
+      </main>
     </div>
-  )
+  );
 }
