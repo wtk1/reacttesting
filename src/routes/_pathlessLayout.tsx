@@ -21,17 +21,17 @@ function LayoutComponent() {
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-sky-500 via-violet-500 to-fuchsia-500 opacity-40 blur group-hover:opacity-60 transition" />
 
               {/* White/dark box */}
-              <div className="relative h-8 w-8 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 grid place-items-center shadow-sm">
+              <div className="relative h-10 w-10 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 grid place-items-center shadow-sm">
                 {/* Small purple cube with emoji on top */}
-                <div className="relative h-4 w-4 rounded-sm bg-gradient-to-br from-sky-500 to-fuchsia-500 grid place-items-center">
-                  <span className="text-[0.65rem] opacity-90 leading-none">
+                <div className="relative h-6 w-6 rounded-sm bg-gradient-to-br from-sky-500 to-fuchsia-500 grid place-items-center">
+                  <span className="text-[0.9rem] opacity-90 leading-none">
                     🔮
                   </span>
                 </div>
               </div>
             </div>
-            <h1 className="pl-2 text-lg sm:text-xl tracking-tight">
-              <b>LLM Compare</b> Frontend Edition
+            <h1 className="pl-1 text-lg sm:text-xl tracking-tight">
+              <b>LLM Compare</b> - Frontend Edition
             </h1>
           </Link>
         </div>
