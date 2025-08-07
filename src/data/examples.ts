@@ -61,6 +61,25 @@ const examples: Example[] = [
       },
     ],
   },
+  {
+    id: "leaflink-2",
+    title: "Leaf Link 2 (same prompt)",
+    prompt: `Are you familiar with how tanstack router works? It uses react and TAILWIND! this is what a route aitest.tsx looks like “”” import { createFileRoute } from '@tanstack/react-router'  export const Route = createFileRoute('/aitest')({ component: RouteComponent, })  function RouteComponent() { return <div>Hello "/gpttest"!</div> } “””  I want you to come up with the RouteComponent for a new page. It will be for a website called LeafLink where cannabis brands and creators can make their own page kinda like linktree and they can connect and see analyitics etc get creative. Make the landing page as best as you possibly can remember to use only tailwind classes if css is needed see if you can write that within the component. Lets see what you got!`,
+    models: [
+      {
+        name: "gpt-5",
+        host: "ChatGPT (Paid Plan)",
+        duration: "Thinking (Attempt #1)",
+        cost: 20,
+      },
+      {
+        name: "2-gpt-5",
+        host: "ChatGPT (Paid Plan)",
+        duration: "Thinking (Attempt #2)",
+        cost: 20,
+      },
+    ],
+  },
   // …more examples
 ];
 export default examples;
