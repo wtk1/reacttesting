@@ -53,6 +53,12 @@ const examples: Example[] = [
         duration: "1m 30s",
         cost: 0,
       },
+      {
+        name: "glm-4.5",
+        host: "OpenRouter.AI (z.ai)",
+        duration: "1m 37s",
+        cost: 0.0133024,
+      },
     ],
   },
   // …more examples
